@@ -24,12 +24,12 @@ let getNewFilename oldFilename episodeNumber =
             |> fun x -> x + extension
 
 // Renames a file based on episode number
-let renameFile oldFilename episodeNumber dryRun =
+let renameFile path oldFilename episodeNumber dryRun =
     let newFilename = getNewFilename oldFilename episodeNumber
     if oldFilename <> newFilename then
         printfn "Rename \"%s\" to \"%s\"" oldFilename newFilename
         if dryRun = false then
-            File.Move(oldFilename, newFilename)
+            File.Move(Path.Combine(path, oldFilename), Path.Combine(path, newFilename))
 
 // Makes a template regex
 let makeTemplate input = 
@@ -50,6 +50,6 @@ let processFiles path templateString dryRun =
     
     let processFile file =
         let episodeNumber = getEpisodeNumber template file
-        renameFile file episodeNumber dryRun
+        renameFile path file episodeNumber dryRun
 
     files |> Seq.iter processFile
