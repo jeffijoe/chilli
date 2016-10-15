@@ -48,7 +48,7 @@ That will ensure the correct order, and that's what Chilli does.
 
 # Where do I get it?
 
-You can download the binaries from [the releases section](/releases/latest).
+You can download the binaries from [the releases section](https://github.com/jeffijoe/chilli/releases/latest).
 
 # Usage
 
